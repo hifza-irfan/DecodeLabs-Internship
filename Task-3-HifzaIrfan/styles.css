@@ -1,0 +1,413 @@
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8fafc;
+    color: #0f172a;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 1.5rem;
+}
+
+/* ===== WRAPPER (full page layout) ===== */
+.wrapper {
+    max-width: 950px;   /* Changed from 700px to match footer */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 0 auto;     /* Centers everything */
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1.2rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ===== STATUS DISPLAY ===== */
+.status {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.js-mood-label {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.js-quote {
+    font-size: 1.1rem;
+    color: #64748b;
+    font-style: italic;
+    transition: color 0.3s ease;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ===== MOOD GRID (8 buttons in 4 columns) ===== */
+.mood-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+.js-mood-btn {
+    padding: 1rem 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.75rem;
+    background-color: #f8fafc;
+    color: #0f172a;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.js-mood-btn:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-2px);
+}
+
+.js-mood-btn:active {
+    transform: scale(0.96);
+}
+
+/* ===== THEME TOGGLE ===== */
+.js-theme-toggle {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 2px solid #e2e8f0;
+    border-radius: 2rem;
+    background-color: #f8fafc;
+    color: #0f172a;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+}
+
+.js-theme-toggle:hover {
+    background-color: #f1f5f9;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-content h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #0f172a;
+    transition: color 0.3s ease;
+}
+
+.about-content p {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.about-features {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.about-features span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #475569;
+    background-color: #f1f5f9;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Dark Mode for About --- */
+body.is-dark .about {
+    background-color: #1e293b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.is-dark .about-content h2 {
+    color: #f1f5f9;
+}
+
+body.is-dark .about-content p {
+    color: #94a3b8;
+}
+
+body.is-dark .about-features span {
+    background-color: #334155;
+    color: #cbd5e1;
+}
+
+
+/* ===== FOOTER ===== */
+footer {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 2rem 2rem 0 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    transition: border-color 0.3s ease;
+}
+
+.footer-column h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-column h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+}
+
+.footer-column p {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.4rem;
+}
+
+.footer-column ul li a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #2563EB;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 0;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.footer-bottom strong {
+    color: #0f172a;
+}
+
+.footer-tagline {
+    color: #94a3b8;
+}
+
+/* ===== STATE CLASSES ===== */
+
+/* --- Dark Mode --- */
+body.is-dark {
+    background-color: #0f172a;
+    color: #f1f5f9;
+}
+
+body.is-dark header,
+body.is-dark main,
+body.is-dark footer {
+    background-color: #1e293b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.is-dark .js-quote {
+    color: #94a3b8;
+}
+
+body.is-dark .js-mood-btn {
+    background-color: #334155;
+    border-color: #475569;
+    color: #f1f5f9;
+}
+
+body.is-dark .js-mood-btn:hover {
+    background-color: #475569;
+}
+
+body.is-dark .js-theme-toggle {
+    background-color: #334155;
+    border-color: #475569;
+    color: #f1f5f9;
+}
+
+body.is-dark .js-theme-toggle:hover {
+    background-color: #475569;
+}
+
+body.is-dark .footer-content {
+    border-bottom-color: #334155;
+}
+
+body.is-dark .footer-column h4 {
+    color: #94a3b8;
+}
+
+body.is-dark .footer-column ul li a {
+    color: #94a3b8;
+}
+
+body.is-dark .footer-column ul li a:hover {
+    color: #60A5FA;
+}
+
+body.is-dark .footer-bottom strong {
+    color: #f1f5f9;
+}
+
+body.is-dark .footer-bottom,
+body.is-dark .footer-tagline {
+    color: #64748b;
+}
+
+/* --- Active Mood Button --- */
+.js-mood-btn.is-active {
+    border-color: currentColor;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px currentColor;
+    background-color: #ffffff;
+}
+
+body.is-dark .js-mood-btn.is-active {
+    background-color: #1e293b;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 640px) {
+    main {
+        padding: 1.5rem;
+    }
+
+    .mood-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .js-mood-label {
+        font-size: 1.8rem;
+    }
+
+    .js-quote {
+        font-size: 0.95rem;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+        text-align: center;
+        padding: 1rem 1.5rem;
+    }
+
+    footer {
+        padding: 1.5rem 1.5rem 0 1.5rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .footer-column ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .mood-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .js-mood-btn {
+        white-space: normal;
+        padding: 0.8rem;
+    }
+}
