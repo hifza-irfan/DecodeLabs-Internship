@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mood & Focus Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- ===== MAIN WRAPPER ===== -->
+    <div class="wrapper">
+        <!-- ===== HEADER ===== -->
+        <header>
+            <h1><img src="images/logo.png" alt="Logo" height="30px" width="70px"> Mood &amp; Focus</h1>
+            <button class="js-theme-toggle">🌙 Dark</button>
+        </header>
+
+        <!-- ===== ABOUT SECTION ===== -->
+        <section class="about">
+            <div class="about-content">
+                <h2><img src="images/about.png" alt="About" height="20px" width="20px"> About This Dashboard</h2>
+                <p>
+                    Select a mood to shift your mindset and energy. Each mood
+                    changes the quote, accent color, and vibe of the page.
+                    Your preferences are saved automatically — even after you
+                    close the browser.
+                </p>
+                <div class="about-features">
+                    <span>🎯 8 Moods</span>
+                    <span>🌙 Dark Mode</span>
+                    <span>💾 Auto-Save</span>
+                    <span>🧠 IPO Thinking</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main>
+            <!-- Status Display -->
+            <div class="status">
+                <p class="js-mood-label">Focus 🎯</p>
+                <p class="js-quote">Your attention is your most valuable asset. Guard it fiercely.</p>
+            </div>
+
+            <!-- Mood Buttons (8 total) -->
+            <div class="mood-grid">
+                <button class="js-mood-btn" data-mood="focus">🎯 Focus</button>
+                <button class="js-mood-btn" data-mood="calm">🌊 Calm</button>
+                <button class="js-mood-btn" data-mood="energetic">⚡ Energetic</button>
+                <button class="js-mood-btn" data-mood="creative">🎨 Creative</button>
+                <button class="js-mood-btn" data-mood="grateful">🙏 Grateful</button>
+                <button class="js-mood-btn" data-mood="motivated">🚀 Motivated</button>
+                <button class="js-mood-btn" data-mood="peaceful">🕊️ Peaceful</button>
+                <button class="js-mood-btn" data-mood="playful">🎪 Playful</button>
+            </div>
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <div class="footer-content">
+                <!-- Column 1: Brand -->
+                <div class="footer-column">
+                    <h3>🎯 Mood &amp; Focus</h3>
+                    <p>Your daily companion for mental clarity and emotional well-being.</p>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Info -->
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>📧 <a href="mailto:hifza.easp.atk@gmail.com">hifza.easp.atk@gmail.com</a></li>
+                        <li>📱 <a href="#">+92 300 1234567</a></li>
+                        <li>📍 Pakistan</li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Social / Resources -->
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 <strong>Hifza Irfan</strong>. All Rights Reserved.</p>
+                <p class="footer-tagline">Built with IPO thinking · DecodeLabs Project 3</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
