@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- THE MAGIC VIEWPORT TAG:
+        Without this, phones pretend to be computers (960px wide) & With this, phones tell the truth about their actual width(This makes ALL your media queries work correctly!)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttercup Cafe | Where Every Day Feels Like Sunday Morning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 🍔 NAVIGATION: Hamburger Menu (JavaScript version) -->
+    <nav class="navbar">
+        <div class="logo"><img src="images/logo.png" alt="Buttercup Cafe Logo">
+            <span>Buttercup</span>
+        </div>
+        <button id="menu-btn" class="menu-btn">☰</button>
+        <div id="menu-popover" class="nav-popover">
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">About</a>
+            <a href="#reserve">Reserve</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- 🌅 HERO SECTION: First thing people see       -->
+    <section id="home" class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="images/cafe-video.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <h1>Buttercup Cafe</h1>
+            <p class="tagline">"Where Every Day Feels Like Sunday Morning!"</p>
+            <a href="#menu" class="cta-button">View Our Menu →</a>
+        </div>
+    </section>
+
+    <!-- 📋 MENU GRID SECTION (Slide 4 - CSS Grid)     -->
+    <!-- Mobile: 1 card per row | Tablet: 2 | Desktop: 3 -->
+    <section id="menu" class="menu-section">
+        <h2>Our Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <img src="images/Buttercup Golden Latte.jpeg" alt="Buttercup Golden Latte" class="card-image">
+                <h3>Buttercup Golden Latte</h3>
+                <p>Turmeric, honey, oat milk, cinnamon</p>
+                <span class="price">PKR 650</span>
+            </div>
+            <div class="menu-card">
+                <img src="images/Vanilla Bean Cold Brew.jpeg" alt="Vanilla Bean Cold Brew" class="card-image">
+                <h3>Vanilla Bean Cold Brew</h3>
+                <p>Smooth cold brew with real vanilla</p>
+                <span class="price">PKR 750</span>
+            </div>
+            <div class="menu-card">
+                <img src="images/Honey Butter Croissant.jpeg" alt="Honey Butter Croissant" class="card-image">
+                <h3>Honey Butter Croissant</h3>
+                <p>Flaky croissant drizzled with wildflower honey</p>
+                <span class="price">PKR 450</span>
+            </div>
+            <div class="menu-card">
+                <img src="images/Sunrise Breakfast Sandwich.jpeg" alt="Sunrise Breakfast Sandwich" class="card-image">
+                <h3>Sunrise Breakfast Sandwich</h3>
+                <p>Scrambled eggs, melted cheddar, chives on brioche</p>
+                <span class="price">PKR 850</span>
+            </div>
+            <div class="menu-card">
+                <img src="images/Buttercup's Blooming Cake.jpeg" alt="Buttercup's Blooming Cake" class="card-image">
+                <h3>Buttercup's Blooming Cake</h3>
+                <p>Lemon & elderflower cake with buttercream</p>
+                <span class="price">PKR 650 (per slice)</span>
+            </div>
+            <div class="menu-card">
+                <img src="images/Warm Butter Cookie.jpeg" alt="Warm Butter Cookie" class="card-image">
+                <h3>Warm Butter Cookie</h3>
+                <p>Classic shortbread with vanilla glaze</p>
+                <span class="price">PKR 300</span>
+            </div>
+
+
+            <div class="menu-card">
+                <img src="images/Strawberry Cream Danish.jpeg" alt="Strawberry Cream Danish" class="card-image">
+                <h3>Strawberry Cream Danish</h3>
+                <p>Fresh strawberries with vanilla cream filling</p>
+                <span class="price">PKR 550</span>
+            </div>
+            <div class="menu-card">
+                <img src="images/Caramel Honey Frappe.jpeg" alt="Caramel Honey Frappe" class="card-image">
+                <h3>Caramel Honey Frappe</h3>
+                <p>Blended coffee with caramel and honey drizzle</p>
+                <span class="price">PKR 800</span>
+            </div>
+            <div class="menu-card">
+                <img src="images/Lavender Vanilla Cupcake.jpeg" alt="Lavender Vanilla Cupcake" class="card-image">
+                <h3>Lavender Vanilla Cupcake</h3>
+                <p>Soft vanilla cupcake with lavender buttercream</p>
+                <span class="price">PKR 500</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📖 ABOUT US SECTION                          -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>Buttercup Cafe started with a simple dream: create a place where every morning feels like Sunday —
+                    slow, warm, and filled with the smell of fresh coffee and baked goods.</p>
+                <p>Our name comes from the little yellow flowers that pop up unexpectedly, bringing joy to an ordinary
+                    day. That's what we aim to do with every cup and every bite.</p>
+                <p class="signature">— The Buttercup Family</p>
+            </div>
+            <div class="about-image">
+                <div class="image-placeholder"><img src="images/owner.png" alt="Buttercup Cafe Owner" height="400px"
+                        width="600px"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🕐 OPENING HOURS TABLE                        -->
+    <section id="hours" class="hours-section">
+        <h2>Opening Hours</h2>
+        <div class="hours-table">
+            <div class="hours-row">
+                <span class="day">Monday - Friday</span>
+                <span class="time">7:00 AM - 8:00 PM</span>
+            </div>
+            <div class="hours-row">
+                <span class="day">Saturday</span>
+                <span class="time">8:00 AM - 9:00 PM</span>
+            </div>
+            <div class="hours-row">
+                <span class="day">Sunday</span>
+                <span class="time">8:00 AM - 6:00 PM</span>
+            </div>
+            <div class="hours-row highlight">
+                <span class="day">☕ Sunday Morning Special</span>
+                <span class="time">Free pastry with any coffee!</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📝 RESERVATION FORM                           -->
+    <section id="reserve" class="reserve-section">
+        <h2>Make a Reservation</h2>
+        <form class="reservation-form" id="reservation-form">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Time</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+            <div class="form-group">
+                <label for="guests">Number of Guests</label>
+                <select id="guests" name="guests">
+                    <option value="1">1 person</option>
+                    <option value="2">2 people</option>
+                    <option value="3">3 people</option>
+                    <option value="4">4 people</option>
+                    <option value="5">5+ people</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Reserve My Table →</button>
+        </form>
+    </section>
+
+    <!-- 🖼️ GALLERY SECTION                            -->
+    <section id="gallery" class="gallery-section">
+        <h2>From Our Kitchen</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="images/Buttercup's Blooming Cake.jpeg" alt="Buttercup's Blooming Cake"></div>
+            <div class="gallery-item"><img src="images/Buttercup Golden Latte.jpeg" alt="Buttercup Golden Latte"></div>
+            <div class="gallery-item"><img src="images/Honey Butter Croissant.jpeg" alt="Honey Butter Croissant"></div>
+            <div class="gallery-item"><img src="images/Sunrise Breakfast Sandwich.jpeg"
+                    alt="Sunrise Breakfast Sandwich"></div>
+        </div>
+    </section>
+
+    <!-- 📍 CONTACT & LOCATION                         -->
+    <section id="contact" class="contact-section">
+        <h2>Visit Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p><span class="contact-icon">📍</span> 123 Sunday Morning Lane</p>
+                <p><span class="contact-icon">📞</span> (555) 123-BUTTERCUP</p>
+                <p><span class="contact-icon">✉️</span> hello@buttercupcafe.com</p>
+            </div>
+            <div class="map-placeholder">
+                <img src="images/map.png" alt="Buttercup Cafe Location Map">
+            </div>
+        </div>
+    </section>
+
+    <!-- 💚 FOOTER (Slide 1: "Slice of Happiness" quote) -->
+    <footer class="footer">
+        <p>"A Little Slice of Happiness"</p>
+        <p class="copyright">© 2026 Buttercup Cafe | DecodeLabs Project 2</p>
+    </footer>
+
+    <!-- JavaScript goes at the bottom (so HTML loads first!) -->
+    <script src="script.js"></script>
+</body>
+
+</html>
