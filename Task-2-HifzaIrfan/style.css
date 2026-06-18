@@ -1,0 +1,623 @@
+/* ============================================ */
+/* 🏗️ RESET & BASE STYLES (Mobile First Strategy) */
+/* ============================================ */
+/* 
+    Mobile First means: 
+    We write CSS for phones FIRST (no media queries needed)
+    Then we ADD complexity for tablets/desktops using min-width
+    This follows Slide 3 perfectly!
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Think of it like: padding stays INSIDE the box, doesn't make it bigger */
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background-color: #FFF8F0;
+    /* Soft white - like fresh cream */
+    color: #3E2723;
+    /* Dark brown - easy on the eyes */
+    line-height: 1.5;
+    /* Breathing room between lines */
+}
+
+/* ============================================ */
+/* 🎨 COLOR VARIABLES (The Buttercup Palette)   */
+/* ============================================ */
+:root {
+    --orange: #E67E22;
+    /* Like a warm sunrise */
+    --cream: #FDF2E9;
+    /* Like fresh butter */
+    --olive: #7D8A2E;
+    /* Fresh and herby */
+    --brown: #3E2723;
+    /* Rich, dark coffee */
+    --soft-white: #FFF8F0;
+    /* Clean background */
+}
+
+/* ============================================ */
+/* 📝 FLUID TYPOGRAPHY (Slide 5 - clamp() function) */
+/* ============================================ */
+/* 
+    clamp(min, preferred, max)
+    Think of it like: "Never smaller than X, never bigger than Y, and grow smoothly in between"
+    This means NO media queries needed for font sizes!
+*/
+h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    color: var(--orange);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+p {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+}
+
+/* ============================================ */
+/* 🍔 NAVIGATION (JavaScript Hamburger)        */
+/* ============================================ */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* Logo on left, button on right */
+    align-items: center;
+    /* Vertically centered */
+    background-color: var(--cream);
+    padding: 1rem;
+    position: sticky;
+    /* Sticks to top when scrolling */
+    top: 0;
+    z-index: 100;
+    /* Stays above everything else */
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 87px;
+    height: 85px;
+    object-fit: contain;
+}
+
+/* The ☰ button - big enough for thumbs! */
+.menu-btn {
+    background: var(--orange);
+    color: white;
+    border: none;
+    font-size: 1.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    min-width: 48px;
+    /* 👆 Big enough for thumbs (Slide 5) */
+    min-height: 48px;
+}
+
+/* The dropdown menu - hidden until you click the button */
+.nav-popover {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    background: var(--cream);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    /* Stack links vertically (answered your earlier question!) */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 200px;
+
+    /* HIDDEN by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+/* When JavaScript adds the "show" class, menu appears */
+.nav-popover.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-popover a {
+    color: var(--brown);
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    min-height: 44px;
+    /* 👆 Big tap target */
+    display: flex;
+    align-items: center;
+}
+
+.nav-popover a:hover {
+    color: var(--orange);
+    background-color: rgba(230, 126, 34, 0.1);
+    border-radius: 0.5rem;
+}
+
+/* ============================================ */
+/* 🌅 HERO SECTION                              */
+/* ============================================ */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    border-bottom: 4px solid var(--orange);
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.tagline {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    font-style: italic;
+    color: white;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--orange);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    min-height: 44px;
+}
+
+.cta-button:hover {
+    background-color: #D35400;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+/* ============================================ */
+/* 📋 MENU GRID (Slide 4 - Grid for layout)     */
+/* ============================================ */
+.menu-section {
+    padding: 3rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* MOBILE: 1 column (no media query needed - that's mobile-first!) */
+/* TABLET: 2 columns at 640px and up */
+@media (min-width: 640px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* DESKTOP: 3 columns at 1024px and up */
+@media (min-width: 1024px) {
+    .menu-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================ */
+/* 🃏 MENU CARD (Flexbox for components)        */
+/* ============================================ */
+.menu-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    /* Smoother, longer transition */
+
+    /*transition: transform 0.2s, box-shadow 0.1s;*/
+    /* Flexbox inside! Grid for layout, Flexbox for stuff inside */
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    /* Smoother, longer transition */
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    /* Changes cursor to hand */
+}
+
+.menu-card:hover {
+    transform: translateY(-12px) scale(1.02);   /* Lifts higher + slight zoom */
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);  /* Much deeper shadow */
+    border-bottom: 3px solid var(--orange);  /* Adds colored accent border */
+}
+
+.card-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+/*.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}*/
+
+.menu-card h3 {
+    color: var(--brown);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-card p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    flex-grow: 1;
+    /* Pushes the price to the bottom */
+}
+
+.price {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: var(--orange);
+    font-size: 1.1rem;
+}
+
+/* ============================================ */
+/* 📖 ABOUT SECTION                             */
+/* ============================================ */
+.about-section {
+    background-color: var(--cream);
+    padding: 3rem 1rem;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .about-container {
+        flex-direction: row;
+        /* Side by side on desktop */
+        align-items: center;
+    }
+
+    .about-text,
+    .about-image {
+        flex: 1;
+    }
+}
+
+.signature {
+    font-style: italic;
+    color: var(--olive);
+    margin-top: 1rem;
+}
+
+.about-image img {
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    display: block;  /* Removes any inline spacing issues */
+}
+
+.about-image img:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    border-bottom: 3px solid var(--orange);
+}
+
+/* ============================================ */
+/* 🕐 HOURS TABLE                               */
+/* ============================================ */
+.hours-section {
+    padding: 3rem 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hours-table {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.hours-row:last-child {
+    border-bottom: none;
+}
+
+.highlight {
+    background-color: var(--cream);
+    color: var(--orange);
+    font-weight: bold;
+}
+
+.day {
+    font-weight: 500;
+}
+
+.time {
+    color: #666;
+}
+
+/* ============================================ */
+/* 📝 RESERVATION FORM                          */
+/* ============================================ */
+.reserve-section {
+    background-color: var(--cream);
+    padding: 3rem 1rem;
+}
+
+.reservation-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--brown);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    min-height: 44px;
+    /* 👆 Easy to tap */
+}
+
+.submit-btn {
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    min-height: 48px;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #D35400;
+}
+
+/* ============================================ */
+/* 🖼️ GALLERY SECTION (Updated)                 */
+/* ============================================ */
+.gallery-section {
+    padding: 3rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.gallery-item {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    border-bottom: 3px solid var(--orange);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 220px;  /* Same height as menu card images */
+    object-fit: cover;
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Optional: Scale image slightly more on hover for extra pop */
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ============================================ */
+/* 📍 CONTACT SECTION                           */
+/* ============================================ */
+.contact-section {
+    padding: 3rem 1rem;
+    background-color: var(--soft-white);
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+@media (min-width: 640px) {
+    .contact-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+    white-space: nowrap;  /* Keeps emoji + text on ONE line */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-icon {
+    font-size: 1.2rem;
+    display: inline-block;
+    min-width: 30px;  /* Fixed width for all emojis */
+}
+
+.map-placeholder {
+    flex: 1;
+    background-color: var(--cream);
+    text-align: center;
+    border-radius: 1rem;
+    min-width: 200px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.map-placeholder:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    border-bottom: 3px solid var(--orange);
+}
+
+.map-placeholder img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+.map-placeholder:hover img {
+    transform: scale(1.03);
+}
+
+
+/* ============================================ */
+/* 💚 FOOTER                                    */
+/* ============================================ */
+.footer {
+    background-color: var(--brown);
+    color: var(--cream);
+    text-align: center;
+    padding: 2rem;
+}
+
+.footer p:first-child {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
