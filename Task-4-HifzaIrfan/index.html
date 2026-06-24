@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DecodeLabs - Secure Form</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ===== SPLASH SCREEN ===== -->
+    <div id="splash" role="status" aria-live="polite">
+        <div class="logo">DecodeLabs</div>
+        <div class="sub">Architecting Trust</div>
+        <div class="loader"></div>
+    </div>
+
+    <!-- ===== FORM APP ===== -->
+    <div id="app" role="main">
+        <h1>🔐 Secure Access</h1>
+        <div class="tagline">Input → Process → Output · Data Integrity First</div>
+
+        <form id="signupForm" novalidate>
+            <!-- NAME -->
+            <div class="form-group">
+                <label for="name">Full Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" placeholder="e.g. Alex Rivera"
+                aria-describedby="name-error" aria-invalid="false" />
+                <div id="name-error" class="msg" role="alert"></div>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="you@example.com"
+                aria-describedby="email-error" aria-invalid="false" />
+                <div id="email-error" class="msg" role="alert"></div>
+            </div>
+
+            <!-- PASSWORD with checklist -->
+            <div class="form-group">
+                <label for="password">Password <span class="required">*</span></label>
+                <input type="password" id="password" name="password" placeholder="Create a strong password"
+                aria-describedby="password-error password-checklist" aria-invalid="false" />
+                <div id="password-error" class="msg" role="alert"></div>
+                
+                <!-- PASSWORD CHECKLIST -->
+                <div id="password-checklist" class="password-checklist" role="list">
+                    <div class="check-item" id="check-length">
+                        <span class="check-icon">○</span>
+                        <span>At least 8 characters</span>
+                    </div>
+                    <div class="check-item" id="check-uppercase">
+                        <span class="check-icon">○</span>
+                        <span>At least one uppercase letter (A-Z)</span>
+                    </div>
+                    <div class="check-item" id="check-lowercase">
+                        <span class="check-icon">○</span>
+                        <span>At least one lowercase letter (a-z)</span>
+                    </div>
+                    <div class="check-item" id="check-number">
+                        <span class="check-icon">○</span>
+                        <span>At least one number (0-9)</span>
+                    </div>
+                    <div class="check-item" id="check-special">
+                        <span class="check-icon">○</span>
+                        <span>At least one special character (#?!@$%^&*()-) </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+            <div class="form-group">
+                <label for="confirm">Confirm Password <span class="required">*</span></label>
+                <input type="password" id="confirm" name="confirm" placeholder="Re-enter password"
+                aria-describedby="confirm-error" aria-invalid="false" />
+                <div id="confirm-error" class="msg" role="alert"></div>
+            </div>
+
+            <!-- SUBMIT -->
+            <button type="submit" class="btn-submit">Submit Payload</button>
+
+            <!-- GLOBAL SUCCESS BANNER -->
+            <div id="formSuccess" class="form-success-banner" role="status" aria-live="polite">
+                ✅ All validations passed! Data transmitted (emerald green).
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
