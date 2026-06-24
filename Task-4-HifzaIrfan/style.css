@@ -1,0 +1,376 @@
+/* ---------- RESET & BASE ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    /* INTERESTING ANIMATED BACKGROUND */
+    background: linear-gradient(-45deg, #0b0e14, #1a1a2e, #16213e, #0f3460);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated gradient background */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Floating particles / stars effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #00d4ff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #7b2ffc, transparent),
+        radial-gradient(2px 2px at 50px 160px, #00d4ff, transparent),
+        radial-gradient(2px 2px at 90px 40px, #7b2ffc, transparent),
+        radial-gradient(2px 2px at 130px 80px, #00d4ff, transparent),
+        radial-gradient(2px 2px at 160px 30px, #7b2ffc, transparent),
+        radial-gradient(1px 1px at 300px 200px, #00d4ff, transparent),
+        radial-gradient(1px 1px at 400px 100px, #7b2ffc, transparent),
+        radial-gradient(1px 1px at 500px 300px, #00d4ff, transparent),
+        radial-gradient(1px 1px at 600px 150px, #7b2ffc, transparent),
+        radial-gradient(1px 1px at 700px 400px, #00d4ff, transparent),
+        radial-gradient(1px 1px at 800px 250px, #7b2ffc, transparent);
+    background-size: 200px 200px;
+    background-repeat: repeat;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Glowing orb effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(0, 212, 255, 0.05), transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(123, 47, 252, 0.05), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+    animation: orbPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes orbPulse {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        transform: scale(1.1) rotate(5deg);
+    }
+}
+
+/* ---------- SPLASH SCREEN ---------- */
+#splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0b0e14 0%, #1a2332 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#splash.hidden {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+#splash .logo {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    background: linear-gradient(90deg, #00d4ff, #7b2ffc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+#splash .sub {
+    color: #8892b0;
+    font-size: 1.1rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.05);
+    border-top: 4px solid #00d4ff;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---------- FORM CARD ---------- */
+#app {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(20, 27, 38, 0.85);  /* Keep some transparency */
+    background-image: url('1567836.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 40px 36px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 212, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    position: relative;
+    z-index: 1;
+}
+
+#app.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#app h1 {
+    color: #e6f1ff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+#app .tagline {
+    color: #8892b0;
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+    border-left: 3px solid #00d4ff;
+    padding-left: 14px;
+}
+ 
+/* ---------- FORM ELEMENTS ---------- */
+.form-group {
+    margin-bottom: 1px;
+} 
+
+.password-checklist {
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    color: #ccd6f6;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+label .required {
+    color: #ff6b6b;
+    margin-left: 2px;
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #1e2836;
+    border: 2px solid #2a3442;
+    border-radius: 12px;
+    color: #e6f1ff;
+    font-size: 1rem;
+    transition: border 0.25s ease, box-shadow 0.25s ease;
+    outline: none;
+}
+
+input:focus {
+    border-color: #00d4ff;
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.12);
+}
+
+input.error {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+}
+
+input.success {
+    border-color: #51cf66;
+    box-shadow: 0 0 0 4px rgba(81, 207, 102, 0.1);
+}
+
+/* ---------- PASSWORD CHECKLIST ---------- */
+.password-checklist {
+    margin-top: 12px;
+    padding: 14px 16px;
+    background: rgba(30, 40, 54, 0.6);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 0;
+    font-size: 0.85rem;
+    color: #8892b0;
+    transition: color 0.3s ease;
+}
+
+.check-item .check-icon {
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    width: 20px;
+    text-align: center;
+}
+
+/* Met - Green */
+.check-item.met {
+    color: #51cf66;
+}
+
+.check-item.met .check-icon::before {
+    content: '✓';
+    color: #51cf66;
+}
+
+/* Not met - Red/Gray */
+.check-item:not(.met) .check-icon::before {
+    content: '○';
+    color: #ff6b6b;
+}
+
+.check-item:not(.met) {
+    color: #ff6b6b;
+}
+
+/* ---------- ERROR / SUCCESS MESSAGES ---------- */
+.msg {
+    font-size: 0.85rem;
+    margin-top: 6px;
+    min-height: 22px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.2s;
+}
+
+.msg-error {
+    color: #ff6b6b;
+}
+
+.msg-success {
+    color: #51cf66;
+}
+
+.msg-error::before {
+    content: "✕";
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.msg-success::before {
+    content: "✓";
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* ---------- BUTTON ---------- */
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #00d4ff, #7b2ffc);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.25s ease;
+    margin-top: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 212, 255, 0.25);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* ---------- FORM OVERALL SUCCESS ---------- */
+.form-success-banner {
+    background: rgba(81, 207, 102, 0.08);
+    border: 1px solid #51cf66;
+    border-radius: 12px;
+    padding: 16px 20px;
+    color: #51cf66;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+    display: none;
+}
+
+.form-success-banner.show {
+    display: block;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 480px) {
+    #app {
+        padding: 28px 18px;
+    }
+
+    #splash .logo {
+        font-size: 2.6rem;
+    }
+
+    .password-checklist {
+        padding: 10px 12px;
+    }
+
+    .check-item {
+        font-size: 0.78rem;
+    }
+}
